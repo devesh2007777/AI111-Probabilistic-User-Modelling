@@ -14,7 +14,7 @@
 
 ---
 
-# Abstract
+## Abstract
 
 This project implements an adaptive Bayesian user modelling and recommendation system using normalized vectors with values between **0 and 1**. The system improves traditional recommendation systems by prioritizing recent user behavior, preserving important long-term information, and solving the cold start problem for new users.
 
@@ -22,7 +22,7 @@ The user profile is continuously updated through Bayesian-style probability upda
 
 ---
 
-# Problem Statement
+## Problem Statement
 
 Many recommendation systems face these limitations:
 
@@ -40,11 +40,11 @@ New users have little or no data, reducing recommendation quality.
 
 ---
 
-# Proposed Solution
+## Proposed Solution
 
 We propose an intelligent recommendation engine based on adaptive Bayesian updating with two separate memory layers.
 
-## Long-Term Context
+### Long-Term Context
 
 Stores stable information such as:
 
@@ -53,7 +53,7 @@ Stores stable information such as:
 * Career preferences
 * Persistent habits
 
-## Short-Term Context
+### Short-Term Context
 
 Stores changing preferences such as:
 
@@ -64,7 +64,7 @@ Stores changing preferences such as:
 
 ---
 
-# Core Mathematical Model
+## Core Mathematical Model
 
 The user is represented by a normalized vector:
 
@@ -88,7 +88,7 @@ using adaptive Bayesian updating.
 
 ---
 
-# Recommendation Logic
+## Recommendation Logic
 
 Each item in the inventory has its own feature vector.
 
@@ -114,7 +114,7 @@ The item with highest relevance is recommended.
 
 ---
 
-# Key Features
+## Key Features
 
 * Adaptive Bayesian Updating
 * Recent Data Weighting
@@ -126,7 +126,7 @@ The item with highest relevance is recommended.
 
 ---
 
-# Technologies Used
+## Technologies Used
 
 * Python
 * NumPy
@@ -138,72 +138,71 @@ The item with highest relevance is recommended.
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```bash
 AI111-Probabilistic-User-Modelling/
 │── README.md
 │── LICENSE
+│── requirements.txt
 │── src/
 │   ├── main.py
 │   ├── mainsimulation.py
 │   ├── coreaiengine.py
 │   ├── mathshelperfunctions.py
-|   |── requirements.txt 
-│   └── setupllm.py 
-
+│   └── setupllm.py
+│── docs/
+│── report.pdf
 ```
-
-  
 
 ---
 
-# File Descriptions
+## File Descriptions
 
-## main.py
+### main.py
 
 Main entry point of the project. Runs the recommendation engine and user interaction flow.
 
-## mainsimulation.py
+### mainsimulation.py
 
 Handles simulation logic for testing user behavior and recommendations.
 
-## coreaiengine.py
+### coreaiengine.py
 
 Contains the core adaptive Bayesian model, memory system, profiling, and recommendation logic.
 
-## mathshelperfunctions.py
+### mathshelperfunctions.py
 
 Contains helper mathematical functions such as vector length, cosine similarity, and calculations.
 
-## setupllm.py
+### setupllm.py
 
 Configures and connects the Google Generative AI API used for NLP-based intent parsing.
 
-## requirements.txt
+### requirements.txt
 
 Contains required Python libraries to run the project.
 
 ---
 
-# Installation
+## Installation
 
-## 1. Clone Repository
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/your-username/AI111-Probabilistic-User-Modelling.git
 cd AI111-Probabilistic-User-Modelling
 ```
 
-## 2. Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 3. Add API Key
+### 3. Add API Key
 
-Open `setupllm.py` or `main.py` and replace:
+Open `src/setupllm.py` or `src/main.py` and replace:
 
 ```python
 API_KEY = "ENTER_API_KEY_HERE"
@@ -211,7 +210,7 @@ API_KEY = "ENTER_API_KEY_HERE"
 
 with your actual API key.
 
-## 4. Run Project
+### 4. Run Project
 
 ```bash
 python src/main.py
@@ -219,7 +218,7 @@ python src/main.py
 
 ---
 
-# How It Works
+## How It Works
 
 1. Create an initial blank or statistical user vector.
 2. Accept user text input.
@@ -231,7 +230,7 @@ python src/main.py
 
 ---
 
-# Example Use Case
+## Example Use Case
 
 Initial User Vector:
 
@@ -256,7 +255,7 @@ Recommended Output: **Action_Movie**
 
 ---
 
-# Future Scope
+## Future Scope
 
 * Reinforcement learning integration
 * Better automatic question generation
@@ -267,7 +266,7 @@ Recommended Output: **Action_Movie**
 
 ---
 
-# GitHub Description
+## GitHub Description
 
 ```text
 This project implements an adaptive Bayesian user modelling and smart recommendation system using 0–1 normalized vectors, recent-data prioritization, dual memory context, cold start handling, and vector similarity optimization.
@@ -275,15 +274,15 @@ This project implements an adaptive Bayesian user modelling and smart recommenda
 
 ---
 
-# Conclusion
+## Conclusion
 
 This project demonstrates how Bayesian reasoning and vector-based modelling can create smarter, more adaptive, and more transparent recommendation systems that understand changing user preferences over time.
 
 ---
 
-# License
+## License
 
-## MIT License
+MIT License
 
 Copyright (c) 2026 devesh2007777
 
