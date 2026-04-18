@@ -270,7 +270,7 @@ Our AI111 project implements an adaptive Bayesian user modelling and smart adver
 
 ## Conclusion
 
-This project demonstrates how Bayesian reasoning and vector-based modelling can create smarter, more adaptive, and more transparent recommendation systems that understand changing user preferences over time.
+This project demonstrates how Bayesian reasoning and vector-based modelling can create smarter, more adaptive, and more transparent advertisement systems that understand changing user preferences over time.
 
 ---
 
