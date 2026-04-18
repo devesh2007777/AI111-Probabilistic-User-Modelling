@@ -12,7 +12,7 @@ class ContextAwareUserModel:
         self.alpha_long = 0.15    # Fast Climate: Shifts into personalities quickly
         self.forget_threshold = 0.05 
         
-        self.weight_short = 0.70  
+        self.weight_short = 0.70   
         self.weight_long = 0.30   
         
         self.character_archetypes = {
