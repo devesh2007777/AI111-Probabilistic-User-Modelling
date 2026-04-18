@@ -34,10 +34,6 @@ Older preferences may no longer represent the user’s current interests.
 
 Systems often fail to distinguish permanent preferences from temporary interests.
 
-### 3. Cold Start Problem
-
-New users have little or no data, reducing recommendation quality.
-
 ---
 
 ## Proposed Solution
@@ -267,7 +263,7 @@ Recommended Output: **Action_Movie**
 ## GitHub Description
 
 ```text
-This project implements an adaptive Bayesian user modelling and smart recommendation system using 0–1 normalized vectors, recent-data prioritization, dual memory context, cold start handling, and vector similarity optimization.
+Our AI111 project implements an adaptive Bayesian user modelling and smart advertisement system using 0–1 normalized vectors, recent-data prioritization, dual memory context, cold start handling, and vector similarity optimization.
 ```
 
 ---
