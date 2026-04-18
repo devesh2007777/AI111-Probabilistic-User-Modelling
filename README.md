@@ -16,124 +16,113 @@
 
 # Abstract
 
-This project focuses on building a more efficient Bayesian update model for intelligent recommendation and decision systems. Current AI systems often treat old and new user data similarly, struggle with memory management, and face the cold start problem for new users.
+This project implements an adaptive Bayesian user modelling and recommendation system using normalized vectors with values between **0 and 1**. The system improves traditional recommendation systems by prioritizing recent user behavior, preserving important long-term information, and solving the cold start problem for new users.
 
-Our proposed system solves these challenges by:
-
-1. Giving higher priority to recent user behavior than outdated behavior.
-2. Separating memory into **long-term context** and **short-term context**.
-3. Handling new users using statistical initialization.
-
-The model continuously updates a user preference vector and recommends outputs whose feature vectors are closest to the updated user state.
+The user profile is continuously updated through Bayesian-style probability updates, and the system recommends the most relevant product, movie, advertisement, or suggestion by comparing the updated user vector with item vectors.
 
 ---
 
 # Problem Statement
 
-Modern AI recommendation systems face three common problems:
+Many recommendation systems face these limitations:
 
-### 1. Old Data vs Recent Data
+### 1. Equal Treatment of Old and New Data
 
-A user’s interests can change over time. Recent preferences should matter more than old ones.
+Older preferences may no longer represent the user’s current interests.
 
-### 2. What to Remember and What to Forget
+### 2. Poor Memory Management
 
-Some user information is permanent (college, branch, career goals), while some is temporary (current mood, short-term interests).
+Systems often fail to distinguish permanent preferences from temporary interests.
 
 ### 3. Cold Start Problem
 
-For new users, the system has no past data and cannot make good recommendations initially.
+New users have little or no data, reducing recommendation quality.
 
 ---
 
 # Proposed Solution
 
-We propose an **Adaptive Bayesian User Model** with two memory layers:
+We propose an intelligent recommendation engine based on adaptive Bayesian updating with two separate memory layers.
 
-## Long-Term Context Vector
+## Long-Term Context
 
 Stores stable information such as:
 
-* Future goals
-* College
-* Branch
-* Career interests
-* Persistent preferences
+* Goals
+* Academic interests
+* Career preferences
+* Persistent habits
 
-## Short-Term Context Vector
+## Short-Term Context
 
-Stores temporary or changing information such as:
+Stores changing preferences such as:
 
-* Recent movie genre interest
-* Current shopping preference
-* Trending choices
-* Session-based behavior
+* Recent searches
+* Current entertainment interests
+* Session-based activity
+* Temporary choices
 
 ---
 
-# Core Idea
+# Core Mathematical Model
 
-The user is represented by an initial preference vector:
+The user is represented by a normalized vector:
 
-```text id="r31326"
-(a, b, c, d)
+```text
+(a, b, c, d, ...)
 ```
 
-Example:
+Where each value lies between:
 
-```text id="i74742"
-(Horror, Romance, Action, Comedy)
+```text
+0 ≤ x ≤ 1
 ```
 
-Using Bayesian updating, the system transforms it into:
+After new observations, the vector is updated to:
 
-```text id="s23995"
-(a₀, b₀, c₀, d₀)
+```text
+(a₀, b₀, c₀, d₀, ...)
 ```
 
-where updated values reflect new observations and recent behavior.
+using adaptive Bayesian updating.
 
 ---
 
 # Recommendation Logic
 
-Each output item also has its own feature vector.
+Each item in the inventory has its own feature vector.
 
 Example:
 
-```text id="p23829"
-Singham = (0.1, 16, 90, 12.9)
+```text
+Movie_X = (0.10, 0.16, 0.90, 0.12)
 ```
 
-The system recommends the item whose vector is closest to the updated user vector by minimizing:
+The system compares vectors using:
 
-```text id="x35914"
+```text
+Cosine Similarity
+```
+
+or distance minimization:
+
+```text
 Σ(ai - a₀i)²
 ```
 
-This is the squared distance measure used to find the best match.
+The item with highest relevance is recommended.
 
 ---
 
-# Objectives
+# Key Features
 
-* Build an efficient Bayesian update model.
-* Prioritize recent data over older data.
-* Separate long-term and short-term memory.
-* Solve the cold start problem for new users.
-* Recommend outputs using vector similarity.
-* Improve personalization and accuracy.
-
----
-
-# Features
-
-* **Bayesian Preference Updating**
-* **Weighted Recent Data Handling**
-* **Dual Memory Context System**
-* **Cold Start Initialization**
-* **Vector-Based Recommendation Engine**
-* **Scalable Design for Future AI Systems**
+* Adaptive Bayesian Updating
+* Recent Data Weighting
+* Dual Memory Architecture
+* Cold Start Initialization
+* Cosine Similarity Recommendation Engine
+* Multi-Domain User Modelling
+* Dynamic Preference Learning
 
 ---
 
@@ -141,38 +130,104 @@ This is the squared distance measure used to find the best match.
 
 * Python
 * NumPy
+* Google Generative AI API
 * Git & GitHub
+* Probability Theory
 * Bayesian Inference
 * Linear Algebra
-* Probability Theory
+
+---
+
+# Project Structure
+
+```bash
+AI111-Probabilistic-User-Modelling/
+│── README.md
+│── LICENSE
+│── src/
+│   ├── main.py
+│   ├── mainsimulation.py
+│   ├── coreaiengine.py
+│   ├── mathshelperfunctions.py
+|   |── requirements.txt 
+│   └── setupllm.py 
+
+```
+
+  
+
+---
+
+# File Descriptions
+
+## main.py
+
+Main entry point of the project. Runs the recommendation engine and user interaction flow.
+
+## mainsimulation.py
+
+Handles simulation logic for testing user behavior and recommendations.
+
+## coreaiengine.py
+
+Contains the core adaptive Bayesian model, memory system, profiling, and recommendation logic.
+
+## mathshelperfunctions.py
+
+Contains helper mathematical functions such as vector length, cosine similarity, and calculations.
+
+## setupllm.py
+
+Configures and connects the Google Generative AI API used for NLP-based intent parsing.
+
+## requirements.txt
+
+Contains required Python libraries to run the project.
+
+---
+
+# Installation
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/your-username/AI111-Probabilistic-User-Modelling.git
+cd AI111-Probabilistic-User-Modelling
+```
+
+## 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## 3. Add API Key
+
+Open `setupllm.py` or `main.py` and replace:
+
+```python
+API_KEY = "ENTER_API_KEY_HERE"
+```
+
+with your actual API key.
+
+## 4. Run Project
+
+```bash
+python src/main.py
+```
 
 ---
 
 # How It Works
 
-## Step 1: Initialize User Vector
-
-Create a starting preference vector based on known data or statistics.
-
-## Step 2: Observe New Inputs
-
-Collect recent user actions, choices, or answers.
-
-## Step 3: Bayesian Update
-
-Update each component of the vector efficiently.
-
-## Step 4: Memory Management
-
-Store stable data in long-term memory and temporary data in short-term memory.
-
-## Step 5: Compare with Output Vectors
-
-Calculate distance between user vector and item vectors.
-
-## Step 6: Recommend Best Match
-
-Return the item with minimum squared error.
+1. Create an initial blank or statistical user vector.
+2. Accept user text input.
+3. Use NLP to convert text into weighted preference categories.
+4. Update short-term and long-term memory vectors.
+5. Compare updated profile with item vectors.
+6. Recommend the best matching output.
+7. Continue learning from future inputs.
 
 ---
 
@@ -180,73 +235,72 @@ Return the item with minimum squared error.
 
 Initial User Vector:
 
-```text id="p52797"
-(20, 10, 40, 30)
+```text
+(0.20, 0.10, 0.40, 0.30)
 ```
 
-After recent activity favoring Action movies:
+After new user activity:
 
-```text id="m63287"
-(15, 8, 60, 17)
+```text
+(0.15, 0.08, 0.60, 0.17)
 ```
 
-Movie Vectors:
+Possible Outputs:
 
-```text id="j51926"
-Singham = (10, 5, 90, 5)
-Titanic = (5, 95, 2, 3)
+```text
+Action_Movie = (0.10, 0.05, 0.90, 0.05)
+Romance_Movie = (0.05, 0.95, 0.02, 0.03)
 ```
 
-The system recommends **Singham** because it is closer to the updated user vector.
+Recommended Output: **Action_Movie**
 
 ---
 
 # Future Scope
 
-* Automatic question generation to learn preferences faster
 * Reinforcement learning integration
-* Real-time user adaptation
+* Better automatic question generation
 * Web dashboard for visualization
-* Large-scale recommendation deployment
-* Use in education, entertainment, healthcare, and e-commerce
+* Real-time analytics
+* Large-scale deployment
+* Use in education, healthcare, e-commerce, and entertainment
 
 ---
 
-# Project Structure
+# GitHub Description
 
-```bash id="s65328"
-AI111-Project/
-│── README.md
-│── src/
-│   ├── main.py
-│   ├── bayesian_update.py
-│   ├── recommender.py
-│── docs/
-│── report.pdf
-│── presentation/
-│── requirements.txt
+```text
+This project implements an adaptive Bayesian user modelling and smart recommendation system using 0–1 normalized vectors, recent-data prioritization, dual memory context, cold start handling, and vector similarity optimization.
 ```
-
----
-
-# GitHub Contribution
-
-Repository used for:
-
-* Version control
-* Team collaboration
-* Code management
-* Documentation
-* Project tracking
 
 ---
 
 # Conclusion
 
-This project presents a smarter Bayesian recommendation system that updates user preferences dynamically, remembers important long-term information, adapts to short-term changes, and gives better recommendations through vector optimization.
+This project demonstrates how Bayesian reasoning and vector-based modelling can create smarter, more adaptive, and more transparent recommendation systems that understand changing user preferences over time.
 
 ---
 
 # License
 
-This project is developed for academic purposes under the AI111 course.
+## MIT License
+
+Copyright (c) 2026 devesh2007777
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
