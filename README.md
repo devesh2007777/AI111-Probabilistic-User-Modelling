@@ -1,4 +1,4 @@
-# Adaptive Bayesian User Modelling & Smart Recommendation System
+# Adaptive Bayesian User Modelling & Smart Advertisement System
 
 ## AI111 Course Project
 
