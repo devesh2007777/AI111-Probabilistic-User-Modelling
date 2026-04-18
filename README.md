@@ -16,7 +16,7 @@
 
 ## Abstract
 
-This project implements an adaptive Bayesian user modelling and recommendation system using normalized vectors with values between **0 and 1**. The system improves traditional recommendation systems by prioritizing recent user behavior, preserving important long-term information, and solving the cold start problem for new users.
+This project implements an adaptive Bayesian user modelling and advertisement system using normalized vectors with values between **0 and 1**. The system improves traditional recommendation systems by prioritizing recent user behavior, preserving important long-term information, and solving the cold start problem for new users.
 
 The user profile is continuously updated through Bayesian-style probability updates, and the system recommends the most relevant product, movie, advertisement, or suggestion by comparing the updated user vector with item vectors.
 
@@ -42,7 +42,7 @@ New users have little or no data, reducing recommendation quality.
 
 ## Proposed Solution
 
-We propose an intelligent recommendation engine based on adaptive Bayesian updating with two separate memory layers.
+We propose an intelligent advertising engine based on adaptive Bayesian updating with two separate memory layers.
 
 ### Long-Term Context
 
@@ -151,8 +151,6 @@ AI111-Probabilistic-User-Modelling/
 │   ├── coreaiengine.py
 │   ├── mathshelperfunctions.py
 │   └── setupllm.py
-│── docs/
-│── report.pdf
 ```
 
 ---
